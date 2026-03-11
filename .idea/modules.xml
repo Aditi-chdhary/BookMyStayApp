@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules>
+    <modules> usecase3
       <module fileurl="file://$PROJECT_DIR$/BookMyStay/BookMyStay.iml" filepath="$PROJECT_DIR$/BookMyStay/BookMyStay.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/App/App.iml" filepath="$PROJECT_DIR$/App/App.iml" />
+ main
       <module fileurl="file://$PROJECT_DIR$/.idea/BookMyStayApp.iml" filepath="$PROJECT_DIR$/.idea/BookMyStayApp.iml" />
     </modules>
   </component>
