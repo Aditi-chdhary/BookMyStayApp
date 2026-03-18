@@ -1,6 +1,13 @@
 import java.util.*;
 
-// -------------------- Reservation (Request Model) --------------------
+// -------------------- Custom Exception --------------------
+class InvalidBookingException extends Exception {
+    public InvalidBookingException(String message) {
+        super(message);
+    }
+}
+
+// -------------------- Reservation Model --------------------
 class Reservation {
     private String guestName;
     private String roomType;
@@ -17,65 +24,114 @@ class Reservation {
     public String getRoomType() {
         return roomType;
     }
+}
 
-    @Override
-    public String toString() {
-        return "Guest: " + guestName + " | Room Type: " + roomType;
+// -------------------- Inventory --------------------
+class Inventory {
+    private Map<String, Integer> availability = new HashMap<>();
+
+    public void addRoomType(String type, int count) {
+        availability.put(type, count);
+    }
+
+    public boolean isValidRoomType(String type) {
+        return availability.containsKey(type);
+    }
+
+    public int getAvailableCount(String type) {
+        return availability.getOrDefault(type, 0);
+    }
+
+    public void decrement(String type) throws InvalidBookingException {
+        int count = getAvailableCount(type);
+
+        if (count <= 0) {
+            throw new InvalidBookingException("No available rooms for type: " + type);
+        }
+
+        availability.put(type, count - 1);
     }
 }
 
-// -------------------- Booking Request Queue --------------------
-class BookingRequestQueue {
-    private Queue<Reservation> queue;
+// -------------------- Validator --------------------
+class BookingValidator {
 
-    public BookingRequestQueue() {
-        queue = new LinkedList<>();
-    }
+    public static void validate(Reservation reservation, Inventory inventory)
+            throws InvalidBookingException {
 
-    // Add request (enqueue)
-    public void addRequest(Reservation reservation) {
-        queue.offer(reservation);
-        System.out.println("Request Added → " + reservation);
-    }
-
-    // View all requests (without removing)
-    public void viewRequests() {
-        System.out.println("\n=== Booking Request Queue (FIFO Order) ===");
-
-        if (queue.isEmpty()) {
-            System.out.println("No pending requests.");
-            return;
+        // Validate guest name
+        if (reservation.getGuestName() == null || reservation.getGuestName().trim().isEmpty()) {
+            throw new InvalidBookingException("Guest name cannot be empty.");
         }
 
-        for (Reservation r : queue) {
-            System.out.println(r);
+        // Validate room type
+        if (!inventory.isValidRoomType(reservation.getRoomType())) {
+            throw new InvalidBookingException("Invalid room type: " + reservation.getRoomType());
+        }
+
+        // Validate availability
+        if (inventory.getAvailableCount(reservation.getRoomType()) <= 0) {
+            throw new InvalidBookingException(
+                    "Room not available for type: " + reservation.getRoomType());
         }
     }
+}
 
-    // Get next request (for future processing)
-    public Reservation getNextRequest() {
-        return queue.peek(); // Read-only (no removal)
+// -------------------- Booking Service --------------------
+class BookingService {
+
+    private Inventory inventory;
+
+    public BookingService(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public void bookRoom(Reservation reservation) {
+        try {
+            // Step 1: Validate (Fail-Fast)
+            BookingValidator.validate(reservation, inventory);
+
+            // Step 2: Allocate room (only if valid)
+            inventory.decrement(reservation.getRoomType());
+
+            // Step 3: Confirm booking
+            System.out.println("✅ Booking Successful for " + reservation.getGuestName() +
+                    " (" + reservation.getRoomType() + ")");
+
+        } catch (InvalidBookingException e) {
+            // Graceful failure handling
+            System.out.println("❌ Booking Failed: " + e.getMessage());
+        }
     }
 }
 
 // -------------------- Main Class --------------------
-public class UseCase5BookingRequestQueue {
+public class UseCase9ErrorHandlingValidation {
     public static void main(String[] args) {
 
-        // Step 1: Create Booking Request Queue
-        BookingRequestQueue requestQueue = new BookingRequestQueue();
+        // Step 1: Setup Inventory
+        Inventory inventory = new Inventory();
+        inventory.addRoomType("Single", 1);
+        inventory.addRoomType("Suite", 0);
 
-        // Step 2: Guests submit booking requests
-        requestQueue.addRequest(new Reservation("Alice", "Single"));
-        requestQueue.addRequest(new Reservation("Bob", "Suite"));
-        requestQueue.addRequest(new Reservation("Charlie", "Double"));
-        requestQueue.addRequest(new Reservation("Diana", "Single"));
+        // Step 2: Booking Service
+        BookingService bookingService = new BookingService(inventory);
 
-        // Step 3: View queue (FIFO order preserved)
-        requestQueue.viewRequests();
+        // Step 3: Test Cases (Valid + Invalid)
 
-        // Step 4: Peek next request (no removal, no allocation yet)
-        System.out.println("\nNext Request to Process:");
-        System.out.println(requestQueue.getNextRequest());
+        // Valid booking
+        bookingService.bookRoom(new Reservation("Alice", "Single"));
+
+        // Invalid: No availability
+        bookingService.bookRoom(new Reservation("Bob", "Suite"));
+
+        // Invalid: Unknown room type
+        bookingService.bookRoom(new Reservation("Charlie", "Deluxe"));
+
+        // Invalid: Empty guest name
+        bookingService.bookRoom(new Reservation("", "Single"));
+
+        // Invalid: Booking after inventory exhausted
+        bookingService.bookRoom(new Reservation("David", "Single"));
     }
-}git
+}
