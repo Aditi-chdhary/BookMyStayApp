@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9df813de-7125-4a19-82d0-49203962ad40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyStay/BookMyStay.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BookMyStay/src/BookMyStayApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyStay/BookMyStay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyStay/BookMyStay.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyStay/src/BookMyStayApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyStay/src/BookMyStayApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +30,16 @@
     &quot;assignee&quot;: &quot;Aditi-chdhary&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Aditi-chdhary/BookMyStayApp.git&quot;,
-    &quot;accountId&quot;: &quot;b419c4aa-cdb8-4d4d-bac7-20cf0fb2bc7d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Aditi-chdhary/BookMyStayApp.git",
+    "accountId": "90b52502-a191-44b8-93ed-c0579c190966"
   }
-}</component>
+}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -47,29 +48,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;usecase3&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Documents/RA2411027010045/BookMyStayApp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Admin/Documents/RA2411027010045/BookMyStayApp/App/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.file-colors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/UC4",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/RA2411027010045/BookMyStayApp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Admin/Documents/RA2411027010045/BookMyStayApp/App/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="App" />
@@ -86,8 +92,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
