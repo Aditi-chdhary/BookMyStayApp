@@ -1,13 +1,81 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.*;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+// -------------------- Reservation (Request Model) --------------------
+class Reservation {
+    private String guestName;
+    private String roomType;
+
+    public Reservation(String guestName, String roomType) {
+        this.guestName = guestName;
+        this.roomType = roomType;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    @Override
+    public String toString() {
+        return "Guest: " + guestName + " | Room Type: " + roomType;
     }
 }
+
+// -------------------- Booking Request Queue --------------------
+class BookingRequestQueue {
+    private Queue<Reservation> queue;
+
+    public BookingRequestQueue() {
+        queue = new LinkedList<>();
+    }
+
+    // Add request (enqueue)
+    public void addRequest(Reservation reservation) {
+        queue.offer(reservation);
+        System.out.println("Request Added → " + reservation);
+    }
+
+    // View all requests (without removing)
+    public void viewRequests() {
+        System.out.println("\n=== Booking Request Queue (FIFO Order) ===");
+
+        if (queue.isEmpty()) {
+            System.out.println("No pending requests.");
+            return;
+        }
+
+        for (Reservation r : queue) {
+            System.out.println(r);
+        }
+    }
+
+    // Get next request (for future processing)
+    public Reservation getNextRequest() {
+        return queue.peek(); // Read-only (no removal)
+    }
+}
+
+// -------------------- Main Class --------------------
+public class UseCase5BookingRequestQueue {
+    public static void main(String[] args) {
+
+        // Step 1: Create Booking Request Queue
+        BookingRequestQueue requestQueue = new BookingRequestQueue();
+
+        // Step 2: Guests submit booking requests
+        requestQueue.addRequest(new Reservation("Alice", "Single"));
+        requestQueue.addRequest(new Reservation("Bob", "Suite"));
+        requestQueue.addRequest(new Reservation("Charlie", "Double"));
+        requestQueue.addRequest(new Reservation("Diana", "Single"));
+
+        // Step 3: View queue (FIFO order preserved)
+        requestQueue.viewRequests();
+
+        // Step 4: Peek next request (no removal, no allocation yet)
+        System.out.println("\nNext Request to Process:");
+        System.out.println(requestQueue.getNextRequest());
+    }
+}git
